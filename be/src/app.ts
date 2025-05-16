@@ -5,6 +5,7 @@ import logger from 'morgan';
 import cors from 'cors';
 import { errorHandlerMiddleware } from './middleware';
 import tagsRouter from './api/v1/tags/router';
+import booksRouter from './api/v1/books/router';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 const v1 = '/api/v1';
 app.use(v1, tagsRouter);
+app.use(v1, booksRouter);
 
 //error handler
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

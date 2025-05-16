@@ -16,7 +16,7 @@ export const createTag = async (req: Request, res: Response, next: NextFunction)
 // Get all tags
 export const getAllTags = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const tags = await getAll(req);
+    const tags = await getAll();
     res.status(StatusCodes.OK).json(tags);
   } catch (error) {
     next(error);
