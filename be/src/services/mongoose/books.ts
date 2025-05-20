@@ -1,6 +1,8 @@
 import { Request } from 'express';
 import Books from '../../api/v1/books/model';
 import { NotfoundError } from '../../errors';
+import config from '../../config/config';
+import { PATH_UPLOAD_BOOKS } from '../../middlewares/multer';
 
 export const create = async (req: Request) => {
   const response = await Books.create({
@@ -13,7 +15,14 @@ export const create = async (req: Request) => {
 
 export const getAll = async () => {
   const response = await Books.find();
-  return response;
+  const booksWithUrl = response.map((book) => {
+    const fileUrl = `${config.baseUrl}/${PATH_UPLOAD_BOOKS}/${book.fileName}`;
+    return {
+      ...book.toObject(),
+      fileUrl,
+    };
+  });
+  return booksWithUrl;
 };
 
 export const getById = async (req: Request) => {
