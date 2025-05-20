@@ -1,22 +1,12 @@
 import { Request } from 'express';
 import Books from '../../api/v1/books/model';
-import BadRequestError from '../../errors/BadRequestError';
 import { NotfoundError } from '../../errors';
 
 export const create = async (req: Request) => {
-  const { title, author } = req.body;
-
-  const isExist = await Books.findOne({
-    title: title,
+  const response = await Books.create({
+    ...req.body,
+    fileName: req.file?.filename,
   });
-
-  if (isExist) {
-    throw new BadRequestError({
-      message: 'Book with title and description alrady exist',
-      logging: true,
-    });
-  }
-  const response = await Books.create(req.body);
 
   return response;
 };
