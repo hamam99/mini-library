@@ -3,7 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import cors from 'cors';
-import { errorHandlerMiddleware } from './middleware';
+import { errorHandlerMiddleware } from './middlewares';
 import tagsRouter from './api/v1/tags/router';
 import booksRouter from './api/v1/books/router';
 
