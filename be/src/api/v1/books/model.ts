@@ -1,4 +1,4 @@
-import { model, Schema, Types } from 'mongoose';
+import { InferSchemaType, model, Schema, Types } from 'mongoose';
 import TagStatus from '../tags/constant';
 
 const booksSchema = new Schema(
@@ -34,3 +34,5 @@ const booksSchema = new Schema(
 );
 
 export default model('Book', booksSchema);
+
+export type BookType = InferSchemaType<typeof booksSchema>;
