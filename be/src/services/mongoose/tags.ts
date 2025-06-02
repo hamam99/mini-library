@@ -1,10 +1,22 @@
 import { Request } from 'express';
-import Tags from '../../api/v1/tags/model';
+import mongoose from 'mongoose';
+import Tags, { ITags } from '../../api/v1/tags/model';
 import BadRequestError from '../../errors/BadRequestError';
 import { NotfoundError } from '../../errors';
 
-export const create = async (req: Request) => {
-  const { title } = req.body;
+type TagDocument = mongoose.Document & ITags;
+
+interface TagRequest extends Request {
+  body: ITags;
+}
+
+interface UpdateTagRequest extends Request {
+  body: Partial<ITags>;
+}
+
+export const create = async (req: TagRequest): Promise<TagDocument> => {
+  // Explicitly type the title to avoid unsafe assignment
+  const title: string = req.body.title;
 
   const isExist = await Tags.findOne({
     title,
@@ -20,13 +32,13 @@ export const create = async (req: Request) => {
   return response;
 };
 
-export const getAll = async () => {
+export const getAll = async (): Promise<TagDocument[]> => {
   const response = await Tags.find();
 
   return response;
 };
 
-export const getById = async (req: Request) => {
+export const getById = async (req: Request): Promise<TagDocument> => {
   const { id } = req.params;
   const response = await Tags.findById(id);
 
@@ -39,7 +51,7 @@ export const getById = async (req: Request) => {
   return response;
 };
 
-export const update = async (req: Request) => {
+export const update = async (req: UpdateTagRequest): Promise<TagDocument> => {
   const { id } = req.params;
   const response = await Tags.findByIdAndUpdate(id, req.body, {
     new: true,
@@ -55,7 +67,7 @@ export const update = async (req: Request) => {
   return response;
 };
 
-export const destroy = async (req: Request) => {
+export const destroy = async (req: Request): Promise<void> => {
   const deletedTag = await Tags.findByIdAndDelete(req.params.id);
   if (!deletedTag) {
     throw new NotfoundError({
