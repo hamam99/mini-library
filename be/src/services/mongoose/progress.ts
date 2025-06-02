@@ -13,13 +13,28 @@ export const create = async (req: Request): Promise<ProgressDocument> => {
 };
 
 export const getAll = async (): Promise<ProgressDocument[]> => {
-  const response = await Progress.find();
+  const response = await Progress.find().populate({
+    path: 'book',
+    select: '_id title',
+    populate: {
+      path: 'tag',
+      select: 'title',
+    },
+  });
+
   return response;
 };
 
 export const getById = async (req: Request): Promise<ProgressDocument> => {
   const { id } = req.params;
-  const response = await Progress.findById(id);
+  const response = await Progress.findById(id).populate({
+    path: 'book',
+    select: '_id title',
+    populate: {
+      path: 'tag',
+      select: 'title',
+    },
+  });
 
   if (!response) {
     throw new NotfoundError({
