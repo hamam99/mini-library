@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@alova/shared@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@alova/shared/-/shared-1.2.0.tgz#5d784e0482f79e697614df15819107006d2c0416"
+  integrity sha512-/LSlP4VqpD+ji7+BwTwfKJObDb0LV3mNT6sE3TUjnopjz2HQaL6f1Qicjf8vplv4dlHki9HEbFFAu8sBNDAMrA==
+
 "@ampproject/remapping@^2.2.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.3.0.tgz#ed441b6fa600072520ce18b43d2c8cc8caecc7f4"
@@ -724,6 +729,14 @@ ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+alova@^3.2.13:
+  version "3.2.13"
+  resolved "https://registry.yarnpkg.com/alova/-/alova-3.2.13.tgz#0443a3b1b6723f569a04e2cc9ae8bbe1714a982b"
+  integrity sha512-TmAgR42CMPywTxKTAtKjRQBhnzuO4i66UpcWm+LCmUgC+mL6DJjBx3N5B8rwNxw8YHDHfvegqNE/Pga3oujtCQ==
+  dependencies:
+    "@alova/shared" "1.2.0"
+    rate-limiter-flexible "^5.0.3"
+
 ansi-styles@^4.1.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
@@ -1359,6 +1372,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+rate-limiter-flexible@^5.0.3:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/rate-limiter-flexible/-/rate-limiter-flexible-5.0.5.tgz#4b7df3cbda7e589704b333be0703d5f159f769d5"
+  integrity sha512-+/dSQfo+3FYwYygUs/V2BBdwGa9nFtakDwKt4l0bnvNB53TNT++QSFewwHX9qXrZJuMe9j+TUaU21lm5ARgqdQ==
+
 react-dom@^19.1.0:
   version "19.1.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.1.0.tgz#133558deca37fa1d682708df8904b25186793623"
@@ -1570,3 +1588,8 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zustand@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-5.0.5.tgz#3e236f6a953142d975336d179bc735d97db17e84"
+  integrity sha512-mILtRfKW9xM47hqxGIxCv12gXusoY/xTSHBYApXozR0HmQv299whhBeeAcRy+KrPPybzosvJBCOmVjq6x12fCg==
